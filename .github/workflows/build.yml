@@ -1,35 +1,87 @@
-name: build
+  Skip to content
+    Search or jump to…
 
-on: [ push, pull_request ]
+    Pull requests
+    Issues
+    Marketplace
+    Explore
 
-jobs:
-  build:
+    @ralucalacatus
+    vladvartolomei
+    /
+    tdd-bank-account-java
+    forked from xp-dojo-classes/tdd-bank-account-java
+    0
+    074
+    Code
+    Pull requests
+    Actions
+    Projects
+    Security
+    Insights
+    tdd-bank-account-java/.github/workflows/build.yml
+    @lithgow
+    lithgow always publish test report
+    …
+    Latest commit 81f150c yesterday
+    History
+    2 contributors
+    @lithgow@tobyweston
+    44 lines (34 sloc)  1.03 KB
 
-    runs-on: ubuntu-latest
+  name: build
 
-    steps:
-      - name: Checkout project
-        uses: actions/checkout@v2
+  on: [ push, pull_request ]
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
+  jobs:
+    build:
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      runs-on: ubuntu-latest
 
-      - name: Build with Gradle
-        run: ./gradlew build jacocoTestReport
+      steps:
+        - name: Checkout project
+          uses: actions/checkout@v2
 
-      - name: Upload test-results.json
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results
-          path: build/test-results.json
+        - name: Set up JDK 1.8
+          uses: actions/setup-java@v1
+          with:
+            java-version: 1.8
 
-      - name: Upload jacoco report
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results
-          path: build/reports/jacoco/test/jacocoTestReport.xml
+        - name: Grant execute permission for gradlew
+          run: chmod +x gradlew
+
+        - name: Build with Gradle
+          run: ./gradlew build jacocoTestReport
+
+        - name: Upload test-results.json
+          uses: actions/upload-artifact@v2
+          with:
+            name: test-results
+            path: build/test-results.json
+          if: always()
+
+        - name: Upload jacoco report
+          uses: actions/upload-artifact@v2
+          with:
+            name: test-results
+            path: build/reports/jacoco/test/jacocoTestReport.xml
+          if: always()
+
+        - name: Publish Test Report
+          uses: ScaCap/action-surefire-report@v1.0.2
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            report_paths: '**/test-results/test/TEST-*.xml'
+          if: always()
+    © 2020 GitHub, Inc.
+    Terms
+    Privacy
+    Security
+    Status
+    Help
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
