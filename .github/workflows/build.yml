@@ -1,34 +1,3 @@
-  Skip to content
-    Search or jump to…
-
-    Pull requests
-    Issues
-    Marketplace
-    Explore
-
-    @ralucalacatus
-    vladvartolomei
-    /
-    tdd-bank-account-java
-    forked from xp-dojo-classes/tdd-bank-account-java
-    0
-    074
-    Code
-    Pull requests
-    Actions
-    Projects
-    Security
-    Insights
-    tdd-bank-account-java/.github/workflows/build.yml
-    @lithgow
-    lithgow always publish test report
-    …
-    Latest commit 81f150c yesterday
-    History
-    2 contributors
-    @lithgow@tobyweston
-    44 lines (34 sloc)  1.03 KB
-
   name: build
 
   on: [ push, pull_request ]
@@ -73,15 +42,3 @@
             github_token: ${{ secrets.GITHUB_TOKEN }}
             report_paths: '**/test-results/test/TEST-*.xml'
           if: always()
-    © 2020 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Help
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
