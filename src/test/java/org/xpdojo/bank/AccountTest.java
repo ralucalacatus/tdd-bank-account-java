@@ -32,7 +32,6 @@ public class AccountTest {
     @Test
     public  void  withdrawAmountRefused() {
         Account account = new Account();
-        account.withdraw(10);
-        assertThat(account.balance()).isEqualTo(false);
+        assertThat(account.withdraw(10)).isEqualTo(false);
     }
 }
