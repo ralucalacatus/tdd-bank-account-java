@@ -9,4 +9,9 @@ public class Account {
     public void deposit(int depositedAmount) {
         balance += depositedAmount;
     }
+
+    public void withdraw(int amount) {
+        balance -= amount;
+    }
+
 }
