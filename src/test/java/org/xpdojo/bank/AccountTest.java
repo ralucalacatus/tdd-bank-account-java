@@ -34,4 +34,17 @@ public class AccountTest {
         Account account = new Account();
         assertThat(account.withdraw(10)).isEqualTo(false);
     }
+
+    @Test
+    public void transferMoney(){
+        Account a1 = new Account();
+        Account a2 = new Account();
+
+        a1.deposit(100);
+
+        a1.withdraw(50);
+        a2.deposit(50);
+        assertThat((a1.balance())).isEqualTo(50);
+        assertThat((a2.balance())).isEqualTo(50);
+    }
 }
