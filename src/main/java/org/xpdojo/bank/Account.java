@@ -10,8 +10,13 @@ public class Account {
         balance += depositedAmount;
     }
 
-    public void withdraw(int amount) {
-        balance -= amount;
+    public boolean withdraw(int amount) {
+        if(balance<amount){
+           return  false;
+        }else {
+            balance -= amount;
+            return true;
+        }
     }
 
 }
